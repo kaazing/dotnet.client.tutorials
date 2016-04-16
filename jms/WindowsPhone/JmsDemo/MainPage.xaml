@@ -1,0 +1,77 @@
+﻿<Page
+    x:Class="JmsDemo.MainPage"
+    RequestedTheme="Light"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:JmsDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid x:Name="LayoutRoot" Margin="0,0,0,0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Image Source="/Assets/SmallLogo.scale-240.png" Grid.Column="0" HorizontalAlignment="Right" Width="24" Height="24" Margin="0,-15,0,20.167"/>
+            <TextBlock  Grid.Column="1" Text="Kaazing .NET JMS Demo" FontSize="24" Margin="0,-18,0.167,18.167" />
+        </Grid>
+        <Popup x:Name="popup">
+        </Popup>
+        <Grid x:Name="ControlGrid" Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="Location" Grid.Row="0" Margin="5,-15,0,0"/>
+            <TextBox x:Name="UrlBox" Grid.Row="0" Grid.ColumnSpan="2" Width="380" HorizontalAlignment="Left" Text="ws://sandbox.kaazing.net/jms" Margin="0" TabIndex="-1"/>
+            <Button x:Name="ConnectButton" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Content="Connect" Width="100" Margin="0,0,10,0" VerticalAlignment="Center" BorderThickness="1" Click="ConnButton_Click" />
+            <Button x:Name="DisconnectButton" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Content="Disconnect" Width="100" Margin="0" VerticalAlignment="Center" BorderThickness="1" IsEnabled="False" Click="DisconnectButton_Click"/>
+            <TextBlock Text="Destination" Grid.Row="2" Margin="5,-15,0,0"/>
+            <TextBox x:Name="DestinationBox" Grid.Row="2" Grid.ColumnSpan="2" Width="380" HorizontalAlignment="Left" Text="/topic/destination" VerticalAlignment="Top" Margin="0" TabIndex="-1"/>
+            <Button x:Name="SubscribeButton" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Right" Content="Subscribe" Width="100" Margin="0,0,10,0" VerticalAlignment="Center" BorderThickness="1" IsEnabled="False" Click="SubButton_Click" />
+            <Button x:Name="UnsubscribeButton" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" Content="Unsubscribe" Width="100" Margin="0" VerticalAlignment="Center" BorderThickness="1" IsEnabled="False" Click="UnsubscribeButton_Click"/>
+            <TextBlock Text="Message" Grid.Row="4" Margin="5,-15,0,0"/>
+            <TextBox x:Name="MessageBox" Grid.Row="4" Grid.ColumnSpan="2" Width="380" HorizontalAlignment="Left" Text="Hello Message" VerticalAlignment="Top" Margin="0"  TabIndex="-1"/>
+            <CheckBox x:Name="BinaryCheckBox" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Left" Content="Binary" IsChecked="False" Margin="0" VerticalAlignment="Center" BorderThickness="1" />
+            <Button x:Name="ClearMsgButton" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right" Content="Clear" Width="100" Margin="0,0,10,0" VerticalAlignment="Center" BorderThickness="1" Click="ClearMsgButton_Click" />
+            <Button x:Name="SendButton" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Right" Content="Send" Width="100" Margin="0" VerticalAlignment="Center" BorderThickness="1" IsEnabled="False" Click="SendButton_Click"/>
+        </Grid>
+        <StackPanel x:Name="LogPanel" Grid.Row="2" Height="240" Width="380">
+            <TextBlock x:Name="MessageCountText" Text="Message Received: 0"  Margin="0,0,5,0" HorizontalAlignment="Right" />
+            <ListView x:Name="logList" ScrollViewer.VerticalScrollMode="Auto" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="5,0,0,0" Height="220" SelectionMode="Single">
+            </ListView>
+        </StackPanel>
+        <Grid Grid.Row="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="190"/>
+                <ColumnDefinition Width="220"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80" />
+            </Grid.RowDefinitions>
+            <Button x:Name="ClearLogButton" Grid.Row="0" Grid.Column="0" Content="ClearLog" HorizontalAlignment="Left" BorderThickness="1" Margin="40,12,0,11" Click="ClearOutput_Click"/>
+            <CheckBox x:Name="ShowJMSHeaders" Grid.Row="0" Grid.Column="1" Content="Show JMS Headers" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,12,0,11"/>
+       
+        </Grid>
+    </Grid>
+</Page>

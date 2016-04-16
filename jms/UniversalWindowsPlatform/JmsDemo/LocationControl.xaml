@@ -1,0 +1,20 @@
+﻿<UserControl
+    x:Class="JmsDemo.LocationControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:JmsDemo"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" Height="241" Width="1366">
+
+    <Grid Background="White">
+        <TextBlock HorizontalAlignment="Left" Margin="130,17,0,0" TextWrapping="Wrap" Text="Enter Location:" FontSize="32" Foreground="Black" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="130,60,0,0" TextWrapping="Wrap" Text="wss://sandbox.kaazing.net/jms" VerticalAlignment="Top" Width="821" BorderBrush="Black" BorderThickness="1" Grid.Row="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="130,114,0,0" TextWrapping="Wrap" Text="Username:" FontSize="24" Foreground="Black" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Margin="258,111,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="693" BorderBrush="Black" BorderThickness="1"/>
+        <TextBlock HorizontalAlignment="Left" Margin="130,160,0,0" TextWrapping="Wrap" Text="Password:" FontSize="24" Foreground="Black" VerticalAlignment="Top" />
+        <PasswordBox HorizontalAlignment="Left" Margin="258,157,0,0" VerticalAlignment="Top" Width="693" BorderBrush= "Black" BorderThickness="1"/>
+        <Button Content="Connect" HorizontalAlignment="Left" Margin="1044,81,0,0" VerticalAlignment="Top" Width="177" Foreground="Black" BorderBrush= "Black" BorderThickness="1" Height="80"/>
+
+    </Grid>
+</UserControl>
