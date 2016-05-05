@@ -82,3 +82,8 @@ DerivedData
 *.x86_64
 *.hex
 
+.*
+bin
+obj
+Thumbs.db
+*.user
