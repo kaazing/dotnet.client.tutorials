@@ -208,7 +208,7 @@ namespace AmqpDemo
 
                         if ((url == null) || (url.Length == 0))
                         {
-                            url = "ws://sandbox.kaazing.net/amqp091";
+                            url = "wss://sandbox.kaazing.net/amqp091";
                         }
 
                         HandleLog("\n");
