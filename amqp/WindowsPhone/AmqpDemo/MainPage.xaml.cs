@@ -238,6 +238,7 @@ namespace AmqpDemo
             catch (Exception ex)
             {
                 HandleLog(ex.Message, Colors.Red);
+                UpdateUI(false);
             }
             finally
             {
@@ -273,6 +274,7 @@ namespace AmqpDemo
             catch (Exception ex)
             {
                 HandleLog(ex.Message, Colors.Red);
+                UpdateUI(false);
             }
             finally
             {
@@ -358,7 +360,7 @@ namespace AmqpDemo
                 FlowButton.IsEnabled = connected;
                 PublishButton.IsEnabled = connected;
 
-                UrlBox.IsReadOnly = !connected;
+                UrlBox.IsReadOnly = connected;
                 ExchangeBox.IsReadOnly = !connected;
 
                 messageReceived = 0;
