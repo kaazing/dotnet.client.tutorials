@@ -15,7 +15,7 @@ under the top-level directory.
 ## Steps for building the project
 
 * Load the solution `EchoDemo.sln` in Microsoft Visual Studio
-* Update the references to Kaazing .NET WebSocket Client library
+* Using NuGet Package Manager, update the references to Kaazing.Enterprise. *If necessary, remove installed Kaazing.Enterprize NuGet package and add it again.*
 
 ## Interact with Kaazing .NET WebSocket Client API
 
