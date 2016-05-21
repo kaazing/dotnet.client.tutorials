@@ -14,7 +14,7 @@ received by the .NET application.
 ## Steps for building the project
 
 * Load the solution `EchoDemo.sln` in Microsoft Visual Studio
-* Using NuGet Package Manager, update the references to Kaazing.Enterprise. *If necessary, remove installed Kaazing.Enterprize NuGet package and add it again.*
+* Using NuGet Package Manager, update the references to Kaazing.Enterprise and Xamarin.Forms. *If necessary, remove installed Kaazing.Enterprize and Xamarin.Forms NuGet packages and add them again.*
 
 ## Interact with Kaazing .NET WebSocket Client API
 
