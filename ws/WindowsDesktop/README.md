@@ -9,21 +9,21 @@ received by the .NET application.
 ## Minimum Requirements for Running or Building Kaazing .NET Desktop WebSocket Demo
 
 * Microsoft .NET Framework 4.5.2
-* Microsoft Visual Studio 2013 or higher
+* Microsoft Visual Studio 2015 or higher
 
 ## Steps for building the project
 
 * Load the solution `EchoDemo.sln` in Microsoft Visual Studio
-* Using NuGet Package Manager, update the references to Kaazing.Enterprise. *If necessary, remove installed Kaazing.Enterprize NuGet package and add it again.*
+* Using NuGet Package Manager, update the references to Kaazing.Enterprise and Xamarin.Forms. *If necessary, remove installed Kaazing.Enterprize and Xamarin.Forms NuGet packages and add them again.*
 
 ## Interact with Kaazing .NET WebSocket Client API
 
 Detailed instructions to create Kaazing .NET WebSocket Demo from scratch to be able to send and receive messages
-over WebSocket can be found [here](http://developer.kaazing.com/documentation/gateway/4.0/dev-dotnet/o_dev_dotnet.html).
+over WebSocket can be found [here](http://kaazing.com/doc/5.0/websocket_client_docs/dev-dotnet/o_dev_dotnet.html).
 
 ## API Documentation
 
 API Documentation for Kaazing .NET WebSocket Client library is available:
 
-* [Kaazing.HTML5](http://developer.kaazing.com/documentation/gateway/4.0/apidoc/client/dotnet/gateway/html/N_Kaazing_HTML5.htm)
-* [Kaazing.Security](http://developer.kaazing.com/documentation/gateway/4.0/apidoc/client/dotnet/gateway/html/N_Kaazing_Security.htm)
+* [Kaazing.HTML5](https://kaazing.com/doc/legacy/4.0/apidoc/client/dotnet/gateway/html/N_Kaazing_HTML5.htm)
+* [Kaazing.Security](https://kaazing.com/doc/legacy/4.0/apidoc/client/dotnet/gateway/html/N_Kaazing_Security.htm)
