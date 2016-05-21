@@ -25,4 +25,4 @@ API Documentation for Kaazing .NET WebSocket JMS Client library is available:
 * [Kaazing.JMS](https://kaazing.com/doc/jms/4.0/apidoc/client/dotnet/jms/html/N_Kaazing_JMS.htm)
 * [Kaazing.JMS.Stomp](https://kaazing.com/doc/jms/4.0/apidoc/client/dotnet/jms/html/N_Kaazing_JMS_Stomp.htm)
 * [Kaazing.JMS.Util](https://kaazing.com/doc/jms/4.0/apidoc/client/dotnet/jms/html/N_Kaazing_JMS_Util.htm)
-* [Kaazing.Security](http://developer.kaazing.com/documentation/gateway/4.0/apidoc/client/dotnet/gateway/html/N_Kaazing_Security.htm)
+* [Kaazing.Security](https://kaazing.com/doc/legacy/4.0/apidoc/client/dotnet/gateway/html/N_Kaazing_Security.htm)
