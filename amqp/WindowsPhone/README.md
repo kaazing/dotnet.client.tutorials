@@ -6,7 +6,7 @@ publishes text messages to the server and listens to the messages from the serve
 ## Minimum Requirements for Running or Building Kaazing .NET Windows Phone WebSocket Demo
 
 * Microsoft .NET Framework 4.5.2
-* Microsoft Visual Studio 2013 or higher
+* Microsoft Visual Studio 2015 or higher
 
 ## Steps for building the project
 
