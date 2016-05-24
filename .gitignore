@@ -87,3 +87,5 @@ bin
 obj
 Thumbs.db
 *.user
+
+packages
