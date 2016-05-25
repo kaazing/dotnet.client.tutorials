@@ -1,7 +1,7 @@
 # Kaazing .NET Windows Phone WebSocket JMS Tutorial
 
 This tutorial shows how native Windows Phone application can communicate over the web with a JMS server via Kaazing WebSocket Gateway using Kaazing .NET WebSocket Client library. The application publishes text messages to the server and listens to the messages from the server over WebSocket.
-## Minimum Requirements for Running or Building Kaazing .NET Windows Phone WebSocket Tutorial
+## Minimum Requirements for Running or Building Kaazing .NET Windows Phone WebSocket JMS Tutorial
 
 * Microsoft .NET Framework 4.5.2
 * Microsoft Visual Studio 2015 or higher
