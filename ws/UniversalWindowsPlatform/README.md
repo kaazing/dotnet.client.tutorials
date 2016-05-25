@@ -1,9 +1,9 @@
 # Kaazing .NET Windows Store WebSocket Echo Tutorial
 
-This tutorial shows how Windows Store application can communicate over the web with an `echo` service running within Kaazing WebSocket Gateway using Kaazing .NET WebSocket Client library. The application sends text messages to the `echo` service over WebSocket using Kaazing .NET WebSocket Client library.
+This tutorial shows how Windows Store application can communicate over the web with an `echo` service running within Kaazing WebSocket Gateway using Kaazing .NET WebSocket Client library. The application sends text messages to the `echo` service over WebSocket.
 The `echo` service, running inside the Kaazing WebSocket Gateway, reflects back the message that is received by the .NET application. 
 
-## Minimum Requirements for Running or Building Kaazing .NET Windows Store WebSocket Tutorial
+## Minimum Requirements for Running or Building Kaazing .NET Windows Store WebSocket Echo Tutorial
 
 * Microsoft .NET Framework 4.5.2
 * Microsoft Visual Studio 2015 or higher

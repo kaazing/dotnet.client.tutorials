@@ -2,7 +2,7 @@
 
 This tutorial shows how standalone .NET desktop application can communicate over the web with an AMQP server via Kaazing WebSocket Gateway using Kaazing .NET WebSocket Client library. The application publishes text messages to the server and listens to the messages from the server over WebSocket.
 
-## Minimum Requirements for Running or Building Kaazing .NET Desktop WebSocket tutorial
+## Minimum Requirements for Running or Building Kaazing .NET Desktop WebSocket AMQP tutorial
 
 * Microsoft .NET Framework 4.5.2
 * Microsoft Visual Studio 2015 or higher
