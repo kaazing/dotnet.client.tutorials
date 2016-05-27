@@ -15,7 +15,7 @@ The `echo` service, running inside the Kaazing WebSocket Gateway, reflects back 
 
 ## Interact with Kaazing .NET WebSocket Client API
 
-Detailed instructions to create Kaazing .NET WebSocket Tutorial from scratch to be able to send and receive messages
+Tutorial how to create Kaazing .NET WebSocket application from scratch to be able to send and receive messages
 over WebSocket can be found [here](http://kaazing.com/doc/5.0/websocket_client_docs/dev-dotnet/o_dev_dotnet.html).
 
 ## API Documentation
