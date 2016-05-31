@@ -14,7 +14,7 @@ This tutorial shows how standalone .NET desktop application can communicate over
 
 ## Interact with Kaazing .NET WebSocket Client API
 
-Detailed instructions to create Kaazing .NET WebSocket AMQP Tutorial from scratch to be able to send and receive messages over WebSocket can be found [here](http://kaazing.com/doc/5.0/amqp_client_docs/dev-dotnet/o_dev_dotnet.html).
+Tutorial how to create Kaazing .NET WebSocket AMQP application from scratch, to be able to send and receive messages over WebSocket can be found [here](http://kaazing.com/doc/5.0/amqp_client_docs/dev-dotnet/o_dev_dotnet.html).
 
 ## API Documentation
 
