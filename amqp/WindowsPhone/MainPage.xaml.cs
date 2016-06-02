@@ -82,6 +82,7 @@ namespace AmqpDemo
             if (Interlocked.CompareExchange(ref lockUIControls, 1, 0) == 0)
             {
                 string url = UrlBox.Text;
+                UpdateTextBoxes(false);
                 ConnectButton.IsEnabled = false;
                 Task.Run(() =>
                 {
@@ -220,6 +221,7 @@ namespace AmqpDemo
                         }
                         catch (Exception ex)
                         {
+                            UpdateUI(false);
                             HandleLog("Exception: " + ex.Message);
                         }
                     }
@@ -251,7 +253,6 @@ namespace AmqpDemo
             try
             {
                 HandleLog("DISCONNECTING: " + url);
-
                 await Task.Run(() =>
                 {
                     try
@@ -267,7 +268,7 @@ namespace AmqpDemo
                     catch (Exception exc)
                     {
                         HandleLog("Exception during DISCONNECT: " + exc.Message);
-                        UpdateUI(false);
+                        UpdateUI(false);                      
                     }
                 });
             }
@@ -294,7 +295,7 @@ namespace AmqpDemo
                     {
                         consumeChannel.FlowChannel(messageFlow);
                     }
-                    catch (Exception exc)
+                    catch (Exception)
                     {
                         if (client != null)
                         {
@@ -331,7 +332,7 @@ namespace AmqpDemo
 
                         PublishBasic(message);
                     }
-                    catch (Exception exc)
+                    catch (Exception)
                     {
                         if (client != null)
                         {
@@ -351,17 +352,25 @@ namespace AmqpDemo
             }
         }
 
+        private void UpdateTextBoxes(bool enable)
+        {
+            var t = this.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+            {
+                UrlBox.IsEnabled = enable;
+                ExchangeBox.IsEnabled = enable;
+            });
+        }
+
         private void UpdateUI(bool connected)
         {
+            UpdateTextBoxes(!connected);
+
             var t = this.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
                 ConnectButton.IsEnabled = !connected;
                 DisconnectButton.IsEnabled = connected;
                 FlowButton.IsEnabled = connected;
-                PublishButton.IsEnabled = connected;
-
-                UrlBox.IsReadOnly = connected;
-                ExchangeBox.IsReadOnly = !connected;
+                PublishButton.IsEnabled = connected;              
 
                 messageReceived = 0;
                 MessageCountText.Text = "Message Received: 0";
@@ -411,7 +420,7 @@ namespace AmqpDemo
             }
 
             terminated = false;
-            HandleLog("DISCONNECTED");
+            HandleLog("DISCONNECTED");         
             UpdateUI(false);
         }
 
@@ -582,6 +591,28 @@ namespace AmqpDemo
             {
                 popup.IsOpen = false;
             });
+        }
+
+        private void checkConnectData()
+        {
+            if (UrlBox.Text.Length==0 || ExchangeBox.Text.Length == 0)
+            {
+                ConnectButton.IsEnabled = false;
+            }
+            else
+            {
+                ConnectButton.IsEnabled = true;
+            }
+        }
+
+        private void OnUrlTextChanged(object sender, TextChangedEventArgs e)
+        {
+            checkConnectData();
+        }
+
+        private void OnFlowTextChanged(object sender, TextChangedEventArgs e)
+        {
+            checkConnectData();
         }
     }
 }

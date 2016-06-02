@@ -3,21 +3,13 @@ using Kaazing.JMS.Stomp;
 using Kaazing.Security;
 using System;
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
 using Windows.UI;
 using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
@@ -75,6 +67,7 @@ namespace JmsDemo
             {
                 ConnectButton.IsEnabled = false;
                 string url = UrlBox.Text;
+                UrlBox.IsEnabled = false;
 
                 Task.Run(() =>
                 {
@@ -148,6 +141,7 @@ namespace JmsDemo
                 ConnectButton.IsEnabled = true;
                 DisconnectButton.IsEnabled = false;
 
+                UrlBox.IsEnabled = true;
                 // disable other buttons
                 SendButton.IsEnabled = false;
                 SubscribeButton.IsEnabled = false;
@@ -228,7 +222,7 @@ namespace JmsDemo
                         });
                     }
                     catch (Exception exc)
-                    {
+                    {                       
                         if (connection != null)
                         {
                             connection.Close();
@@ -237,6 +231,7 @@ namespace JmsDemo
                         var t = this.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
                         {
                             Log("CONNECTION FAILED: " + exc.Message);
+                            UrlBox.IsEnabled = true;
                             ConnectButton.IsEnabled = true;
                         });
                     }
@@ -301,18 +296,21 @@ namespace JmsDemo
                 }
                 else
                 {
-                    await Task.Run(() =>
+                    IDestination destination;
+                    if (dest.StartsWith("/topic/"))
                     {
-                        IDestination destination;
-                        if (dest.StartsWith("/topic/"))
-                        {
-                            destination = session.CreateTopic(dest);
-                        }
-                        else
-                        {
-                            destination = session.CreateQueue(dest);
-                        }
-
+                        destination = session.CreateTopic(dest);
+                    }
+                    else if (dest.StartsWith("/queue/"))
+                    {
+                        destination = session.CreateQueue(dest);
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Destination must start with /topic/ or /queue/");
+                    }
+                    await Task.Run(() =>
+                    { 
                         consumer = session.CreateConsumer(destination);
                         consumer.MessageListener = new MessageHandler(this);
 
@@ -634,5 +632,16 @@ namespace JmsDemo
             }
         }
 
+        private void OnUrlTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (UrlBox.Text.Length == 0)
+            {
+                ConnectButton.IsEnabled = false;
+            }
+            else
+            {
+                ConnectButton.IsEnabled = true;
+            }
+        }
     }
 }

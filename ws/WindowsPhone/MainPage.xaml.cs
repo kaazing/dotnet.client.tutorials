@@ -59,10 +59,12 @@ namespace EchoDemo
                     ws.MessageEvent += ws_MessageEvent;
                     log("Connecting to " + url);
                     ws.Connect(url);
+                    this.UrlBox.IsEnabled = false;
                 }
                 catch (Exception ex)
                 {
                     log("EXCEPTION: " + ex.Message, Colors.Red);
+                    this.UrlBox.IsEnabled = true;
                 }
             }
         }
@@ -178,6 +180,7 @@ namespace EchoDemo
                 connectButton.IsEnabled = true;
                 disconnectButton.IsEnabled = false;
                 SendButton.IsEnabled = false;
+                this.UrlBox.IsEnabled = true;
             });
         }
 
@@ -264,6 +267,18 @@ namespace EchoDemo
             // Windows.Phone.UI.Input.HardwareButtons.BackPressed event.
             // If you are using the NavigationHelper provided by some templates,
             // this event is handled for you.
+        }
+
+        private void OnUrlTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (UrlBox.Text.Length == 0)
+            {
+                connectButton.IsEnabled = false;
+            }
+            else
+            {
+                connectButton.IsEnabled = true;
+            }
         }
     }
 }

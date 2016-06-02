@@ -106,9 +106,6 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="DemoLoginHandler.cs" />
-    <Compile Include="LocationControl.xaml.cs">
-      <DependentUpon>LocationControl.xaml</DependentUpon>
-    </Compile>
     <Compile Include="LogonControl.xaml.cs">
       <DependentUpon>LogonControl.xaml</DependentUpon>
     </Compile>
@@ -135,10 +132,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="LocationControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="LogonControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

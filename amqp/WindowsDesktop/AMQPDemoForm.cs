@@ -37,7 +37,7 @@ namespace Kaazing.AMQP.Demo
         {
             InitializeComponent();
 
-            UpdateConnectionButtons(false);
+            UpdateUI(false);
             //setup ChallengeHandler to handler Basic/Application Basic authentications
             this.basicHandler = BasicChallengeHandler.Create();
             basicHandler.LoginHandler = new LoginHandlerDemo(this);
@@ -61,8 +61,9 @@ namespace Kaazing.AMQP.Demo
             ConnectionStatusValueLabel.Text = "CONNECTING";
 
             Log("\n");
-            Log("CONNECTING: " + LocationText.Text + " " + UsernameText.Text);
+            Log("CONNECTING: " + LocationText.Text );
 
+            UpdateTextBoxes(false);
             string virtualHost = VirtualHostText.Text;
             string locText = LocationText.Text;
 
@@ -73,10 +74,11 @@ namespace Kaazing.AMQP.Demo
 
             try
             {
-                client.Connect(locText, virtualHost, UsernameText.Text, PasswordText.Text);
+                client.Connect(locText, virtualHost, "guest", "guest");
             }
             catch (Exception ex)
             {
+                UpdateUI(false);                
                 Log("Exception: " + ex.Message);
             }
         }
@@ -233,9 +235,8 @@ namespace Kaazing.AMQP.Demo
 
                 ConnectionStatusValueLabel.Text = "DISCONNECTED";
                 terminated = false;
-                UpdateConnectionButtons(false);
+                UpdateUI(false);
                 Log("DISCONNECTED");
-
                 ExchangeText.ReadOnly = false;
                 TransactionExchangeText.ReadOnly = false;
             }));
@@ -254,7 +255,7 @@ namespace Kaazing.AMQP.Demo
                 CreateChannel();
 
                 // Ready to process messages
-                UpdateConnectionButtons(true);
+                UpdateUI(true);
 
                 ExchangeText.ReadOnly = true;
                 TransactionExchangeText.ReadOnly = true;
@@ -318,7 +319,7 @@ namespace Kaazing.AMQP.Demo
             AmqpProperties amqpProperties = new AmqpProperties();
             amqpProperties.MessageId = "abcdxyz1234pqr";
             amqpProperties.CorrelationId = "23456";
-            amqpProperties.UserId = UsernameText.Text;
+            amqpProperties.UserId =UserIdText.Text;
             amqpProperties.ContentType = AmqpProperties.TEXT_PLAIN;
             amqpProperties.DeliveryMode = 1;
             amqpProperties.Priority = 6;
@@ -500,8 +501,16 @@ namespace Kaazing.AMQP.Demo
          * All helper/convenience methods.
          */
 
-        private void UpdateConnectionButtons(bool connected)
+        private void UpdateTextBoxes(bool enabled)
         {
+            LocationText.Enabled = enabled;
+            VirtualHostText.Enabled = enabled;
+            UserIdText.Enabled = enabled;
+        }
+
+        private void UpdateUI(bool connected)
+        {
+            UpdateTextBoxes(!connected);
             ConnectButton.Enabled = !connected;
             DisconnectButton.Enabled = connected;
             SubscribeButton.Enabled = connected;
@@ -571,6 +580,38 @@ namespace Kaazing.AMQP.Demo
             // wait user click 'OK' or 'Cancel' on login window
             userInputCompleted.WaitOne();
             return credentials;
+        }
+
+        private void checkConnectionData()
+        {
+            if (LocationText.Text.Length == 0 || VirtualHostText.Text.Length == 0 || UserIdText.Text.Length == 0 || ExchangeText.Text.Length==0)
+            {
+                ConnectButton.Enabled = false;
+            }
+            else
+            {
+                ConnectButton.Enabled = true;
+            }
+        }
+
+        private void LocationText_TextChanged(object sender, EventArgs e)
+        {
+            checkConnectionData();
+        }
+
+        private void VirtualHostText_TextChanged(object sender, EventArgs e)
+        {
+            checkConnectionData();
+        }
+
+        private void UserIdText_TextChanged(object sender, EventArgs e)
+        {
+            checkConnectionData();
+        }
+
+        private void ExchangeText_TextChanged(object sender, EventArgs e)
+        {
+            checkConnectionData();
         }
     }
 }

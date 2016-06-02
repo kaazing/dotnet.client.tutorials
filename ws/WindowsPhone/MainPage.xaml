@@ -40,16 +40,16 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="Location" Grid.Row="0" Margin="5,-15,0,0"/>
-            <TextBox x:Name="UrlBox" Grid.Row="0" Grid.ColumnSpan="2" Width="380" HorizontalAlignment="Left" Text="wss://sandbox.kaazing.net/echo" Margin="0" TabIndex="-1"/>
-            <Button x:Name="connectButton" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Content="Connect" Width="100" Margin="0,0,10,0" VerticalAlignment="Center" BorderThickness="1" Click="connectButton_Click" />
-            <Button x:Name="disconnectButton" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Content="Disconnect" Width="100" Margin="0" VerticalAlignment="Center" BorderThickness="1" IsEnabled="False" Click="disconnectButton_Click"/>
+            <TextBox x:Name="UrlBox" Grid.Row="0" Grid.ColumnSpan="2" Width="400" HorizontalAlignment="Left" Text="wss://sandbox.kaazing.net/echo" Margin="0,0,-20,0" TabIndex="-1" TextChanged="OnUrlTextChanged"/>
+            <Button x:Name="connectButton" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Content="Connect" Width="100" Margin="0,0.833,109,1.333" VerticalAlignment="Center" BorderThickness="1" Click="connectButton_Click" Grid.ColumnSpan="2" />
+            <Button x:Name="disconnectButton" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Content="Disconnect" Width="100" Margin="0,-0.167,-20,1.5" VerticalAlignment="Center" BorderThickness="1" IsEnabled="False" Click="disconnectButton_Click"/>
             <TextBlock Text="Message" Grid.Row="2" Margin="5,-15,0,0"/>
-            <TextBox x:Name="sendText" Grid.Row="2" Grid.ColumnSpan="2" Width="380" HorizontalAlignment="Left" Text="Hello Message" VerticalAlignment="Top" Margin="0"  TabIndex="-1"/>
-            <CheckBox x:Name="binaryButton" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Content="Binary" IsChecked="False" Margin="0" VerticalAlignment="Center" BorderThickness="1" />
-            <Button x:Name="SendButton" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" Content="Send" Width="100" Margin="0" VerticalAlignment="Center" BorderThickness="1" IsEnabled="False" Click="sendButton_Click"/>
+            <TextBox x:Name="sendText" Grid.Row="2" Grid.ColumnSpan="2" Width="414" HorizontalAlignment="Left" Text="Hello Message" VerticalAlignment="Top" Margin="0,0.25,-34,0"  TabIndex="-1" Grid.RowSpan="2"/>
+            <CheckBox x:Name="binaryButton" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" Content="Binary" IsChecked="False" Margin="5,33.833,0,-30.833" VerticalAlignment="Center" BorderThickness="1" />
+            <Button x:Name="SendButton" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" Content="Send" Width="100" Margin="0,34.833,-20,-33.5" VerticalAlignment="Center" BorderThickness="1" IsEnabled="False" Click="sendButton_Click"/>
         </Grid>
-        <StackPanel x:Name="LogPanel" Grid.Row="2" Width="460">
-            <ListView x:Name="logList" ScrollViewer.VerticalScrollMode="Auto" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="5,0,0,0" Height="360" SelectionMode="Single">
+        <StackPanel x:Name="LogPanel" Grid.Row="1" Margin="0,193,0,0.333" Grid.RowSpan="2">
+            <ListView x:Name="logList" ScrollViewer.VerticalScrollMode="Auto" ScrollViewer.VerticalScrollBarVisibility="Visible" Margin="5,0,0,0" Height="335" SelectionMode="Single" HorizontalAlignment="Left" Width="379">
             </ListView>
         </StackPanel>
         <Grid Grid.Row="3">
@@ -60,7 +60,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Button x:Name="ClearLogButton" Grid.Row="0" Grid.Column="0" Content="ClearLog" HorizontalAlignment="Left" BorderThickness="1" Margin="5,0,5,0" Click="clearButton_Click"/>
+            <Button x:Name="ClearLogButton" Grid.Row="0" Grid.Column="0" Content="ClearLog" HorizontalAlignment="Left" BorderThickness="1" Margin="5,-2,0,21.667" Click="clearButton_Click"/>
         </Grid>
     </Grid>
 </Page>
