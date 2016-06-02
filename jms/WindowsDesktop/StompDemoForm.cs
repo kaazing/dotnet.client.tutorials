@@ -100,7 +100,7 @@ namespace Kaazing.JMS.Demo
             try
             {
                 // try to establish the JMS connection
-                this.JMS_Connect();
+                this.JMS_Connect();                
             }
             catch (System.IO.FileLoadException)
             {
@@ -115,18 +115,15 @@ namespace Kaazing.JMS.Demo
         {
             // Immediately disable the connect button
             ConnectButton.Enabled = false;
-
+            LocationText.Enabled = false;
             Log("CONNECT:" + LocationText.Text);
-
-            String username = (UsernameText.Text.Length != 0) ? UsernameText.Text : null;
-            String password = (PasswordText.Text.Length != 0) ? PasswordText.Text : null;
 
             try
             {
                 StompConnectionFactory connectionFactory = new StompConnectionFactory(new Uri(LocationText.Text));
                 ChallengeHandlers.Default = basicHandler;   // set challenge handler
 
-                connection = connectionFactory.CreateConnection(username, password);
+                connection = connectionFactory.CreateConnection("", "");
                 Log("CONNECTED");
 
                 connection.ExceptionListener = new ExceptionHandler(this);
@@ -152,7 +149,9 @@ namespace Kaazing.JMS.Demo
                 }
 
                 Log("CONNECTION FAILED: " + exc.Message);
+                LocationText.Enabled = true;
                 ConnectButton.Enabled = true;
+                
             }
         }
 
@@ -184,7 +183,7 @@ namespace Kaazing.JMS.Demo
             this.BeginInvoke((InvokeDelegate)(() =>
             {
                 Log("DISCONNECTED");
-
+                LocationText.Enabled = true;
                 ConnectButton.Enabled = true;
 
                 SendButton.Enabled = false;
@@ -206,9 +205,14 @@ namespace Kaazing.JMS.Demo
             {
                 destination = session.CreateTopic(DestinationText.Text);
             }
-            else
+            else if (DestinationText.Text.StartsWith("/queue/"))
             {
                 destination = session.CreateQueue(DestinationText.Text);
+            }
+            else
+            {
+                Log("Destination must start with /topic/ or /queue/");
+                return;
             }
 
             consumer = session.CreateConsumer(destination);
@@ -404,6 +408,18 @@ namespace Kaazing.JMS.Demo
         {
             logLines.Clear();
             Output.Text = "";
+        }
+
+        private void LocationText_TextChanged(object sender, EventArgs e)
+        {
+            if (LocationText.Text.Length == 0)
+            {
+                ConnectButton.Enabled = false;
+            }
+            else
+            {
+                ConnectButton.Enabled = true;
+            }
         }
     }
 }

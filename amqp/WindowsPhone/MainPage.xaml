@@ -44,11 +44,11 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="Location" Grid.Row="0" Margin="5,-15,0,0"/>
-            <TextBox x:Name="UrlBox" Grid.Row="0" Grid.ColumnSpan="2" Width="380" HorizontalAlignment="Left" Text="wss://sandbox.kaazing.net/amqp091" Margin="0" TabIndex="-1"/>
+            <TextBox x:Name="UrlBox" Grid.Row="0" Grid.ColumnSpan="2" Width="380" HorizontalAlignment="Left" Text="wss://sandbox.kaazing.net/amqp091" Margin="0" TabIndex="-1" TextChanged="OnUrlTextChanged"/>
             <Button x:Name="ConnectButton" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Content="Connect" Width="100" Margin="0,0,10,0" VerticalAlignment="Center" BorderThickness="1" Click="ConnButton_Click" />
             <Button x:Name="DisconnectButton" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Content="Disconnect" Width="100" Margin="0" VerticalAlignment="Center" BorderThickness="1" IsEnabled="False" Click="DisconnectButton_Click"/>
             <TextBlock Text="Exchange" Grid.Row="2" Margin="5,-15,0,0"/>
-            <TextBox x:Name="ExchangeBox" Grid.Row="2" Grid.ColumnSpan="2" Width="380" HorizontalAlignment="Left" Text="demo_exchange" VerticalAlignment="Top" Margin="0" TabIndex="-1"/>
+            <TextBox x:Name="ExchangeBox" Grid.Row="2" Grid.ColumnSpan="2" Width="380" HorizontalAlignment="Left" Text="demo_exchange" VerticalAlignment="Top" Margin="0" TabIndex="-1" TextChanged="OnFlowTextChanged"/>
             <Button x:Name="FlowButton" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Right" Content="Flow Off" Width="100" Margin="0,0,10,0" VerticalAlignment="Center" BorderThickness="1" IsEnabled="False" Click="FlowButton_Click" />
             <TextBlock Text="Message" Grid.Row="4" Margin="5,-15,0,0"/>
             <TextBox x:Name="MessageBox" Grid.Row="4" Grid.ColumnSpan="2" Width="380" HorizontalAlignment="Left" Text="Hello, World!" VerticalAlignment="Top" Margin="0"  TabIndex="-1"/>
