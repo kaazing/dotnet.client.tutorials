@@ -53,7 +53,8 @@ namespace EchoDemo
         {
             // Immediately disable the connect button
             ConnectButton.Enabled = false;
-           
+            LocationText.Enabled = false;
+
             //setup ChallengeHandler to handler Basic/Application Basic authentications
             BasicChallengeHandler basicHandler = BasicChallengeHandler.Create();
             basicHandler.LoginHandler = new LoginHandlerDemo(this);
@@ -162,7 +163,7 @@ namespace EchoDemo
             this.BeginInvoke((InvokeDelegate)(() =>
             {
                 Log("DISCONNECTED");
-
+                LocationText.Enabled = true;
                 ConnectButton.Enabled = true;
                 DisconnectButton.Enabled = false;
                 SendButton.Enabled = false;
@@ -192,17 +193,20 @@ namespace EchoDemo
 
 
         private void LocationText_TextChanged(object sender, EventArgs e)
-
         {
-
-
-
+            if (LocationText.Text.Length == 0)
+            {
+                ConnectButton.Enabled = false;
+            }
+            else
+            {
+                ConnectButton.Enabled = true;
+            }
         }
 
 
 
         private void MainForm_Load(object sender, EventArgs e)
-
         {
 
 

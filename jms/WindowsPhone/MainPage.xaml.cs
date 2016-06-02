@@ -13,6 +13,7 @@ using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI;
 using Windows.UI.Core;
+using Windows.UI.Popups;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -75,7 +76,7 @@ namespace JmsDemo
             {
                 ConnectButton.IsEnabled = false;
                 string url = UrlBox.Text;
-
+                    
                 Task.Run(() =>
                 {
                         var t = JMS_ConnectAsync(url);
@@ -106,7 +107,16 @@ namespace JmsDemo
                 string dest = DestinationBox.Text;
                 Task.Run(() =>
                 {
-                    var t = JMS_SubscribeAsync(dest);
+                    try
+                    {
+                        var t = JMS_SubscribeAsync(dest);
+
+                    }
+                    catch (Exception exc)
+                    {
+                        HandleLog(exc.Message, Colors.Red);
+                    }
+
                 });
             }
         }
@@ -142,6 +152,8 @@ namespace JmsDemo
         {
             var t = this.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
             {
+                UrlBox.IsEnabled = true;
+
                 Log("CLOSED");
                 messageReceived = 0;
                 MessageCountText.Text = "Message Received: 0";
@@ -202,6 +214,11 @@ namespace JmsDemo
             try
             {
                 HandleLog("CONNECT:" + url);
+                var tt = this.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
+                {
+                    UrlBox.IsEnabled = false;
+
+                });
 
                 await Task.Run(() =>
                 {
@@ -233,6 +250,7 @@ namespace JmsDemo
 
                         var t = this.Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
                         {
+                            UrlBox.IsEnabled = true;
                             Log("CONNECTION FAILED: " + exc.Message);
                             ConnectButton.IsEnabled = true;
                         });
@@ -241,6 +259,8 @@ namespace JmsDemo
             }
             catch (Exception ex)
             {
+                UrlBox.IsEnabled = true;
+                ConnectButton.IsEnabled = true;
                 HandleLog(ex.Message, Colors.Red);
             }
             finally
@@ -294,22 +314,26 @@ namespace JmsDemo
                 HandleLog("SUBSCRIBE:" + dest);
                 if (consumers.ContainsKey(dest))
                 {
-                    HandleLog("Destion already Consumed:" + dest);
+                    HandleLog("Application is already subscribed to the destination :" + dest, Colors.Yellow);
                 }
                 else
                 {
+                    // Create a destination for the producer
+                    IDestination destination;
+                    if (dest.StartsWith("/topic/"))
+                    {
+                        destination = session.CreateTopic(dest);
+                    }
+                    else if (dest.StartsWith("/queue/"))
+                    {
+                        destination = session.CreateQueue(dest);
+                    }
+                    else
+                    {
+                        throw new ArgumentException("Destination must start with /topic/ or /queue/");
+                    }
                     await Task.Run(() =>
                     {
-                        IDestination destination;
-                        if (dest.StartsWith("/topic/"))
-                        {
-                            destination = session.CreateTopic(dest);
-                        }
-                        else
-                        {
-                            destination = session.CreateQueue(dest);
-                        }
-
                         consumer = session.CreateConsumer(destination);
                         consumer.MessageListener = new MessageHandler(this);
 
@@ -627,6 +651,17 @@ namespace JmsDemo
             }
         }
 
+        private void OnUrlTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (UrlBox.Text.Length == 0)
+            {
+                ConnectButton.IsEnabled = false;
+            }
+            else
+            {
+                ConnectButton.IsEnabled = true;
+            }
+        }
     }
 }
 

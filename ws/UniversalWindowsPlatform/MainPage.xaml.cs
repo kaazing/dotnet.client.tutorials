@@ -51,7 +51,7 @@ namespace EchoDemo
             if (ws == null || ws.ReadyState != WebSocket.OPEN)
             {
                 connectButton.IsEnabled = false;
-                
+                this.url.IsEnabled = false;
                 String url = this.url.Text;
                 ws = factory.CreateWebSocket();
                 ws.OpenEvent += ws_OpenEvent;
@@ -169,6 +169,7 @@ namespace EchoDemo
         {
             var t = Dispatcher.RunAsync(CoreDispatcherPriority.Normal, () =>
            {
+               this.url.IsEnabled = true;
                log("CLOSED");
                connectButton.IsEnabled = true;
                disconnectButton.IsEnabled = false;
@@ -245,6 +246,18 @@ namespace EchoDemo
             {
                 loginPopup.IsOpen = false;
             });
+        }
+
+        private void OnUrlTextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (url.Text.Length == 0)
+            {
+                connectButton.IsEnabled = false;
+            }
+            else
+            {
+                connectButton.IsEnabled = true;
+            }
         }
     }
 }
