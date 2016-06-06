@@ -14,7 +14,11 @@ This tutorial shows how standalone .NET desktop application can communicate over
 
 ## Interact with Kaazing .NET WebSocket JMS Client API
 
+<<<<<<< HEAD
+Tutorial how to create Kaazing .NET WebSocket JMS application from scratch, to be able to send and receive messages over WebSocket can be found [here](http://kaazing.com/doc/5.0/jms_client_docs/dev-dotnet/o_dev_dotnet.html).
+=======
 Titorial how to create Kaazing .NET WebSocket JMS from scratch, to be able to send and receive messages over WebSocket can be found [here](http://kaazing.com/doc/5.0/jms_client_docs/dev-dotnet/o_dev_dotnet.html).
+>>>>>>> kaazing/develop
 
 ## API Documentation
 
