@@ -13,7 +13,7 @@ This tutorial shows how native Windows Phone application can communicate over th
 
 ## Interact with Kaazing .NET WebSocket JMS Client API
 
-Titorial how to create Kaazing .NET WebSocket JMS application from scratch, to be able to send and receive messages over WebSocket can be found [here](http://kaazing.com/doc/5.0/jms_client_docs/dev-dotnet/o_dev_dotnet.html).
+Cheklist how to create Kaazing .NET WebSocket JMS application from scratch, to be able to send and receive messages over WebSocket can be found [here](http://kaazing.com/doc/5.0/jms_client_docs/dev-dotnet/o_dev_dotnet.html).
 
 ## API Documentation
 
