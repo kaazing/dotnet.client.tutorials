@@ -15,7 +15,7 @@ This tutorial shows how Windows Store application can communicate over the web w
 
 ## Interact with Kaazing .NET WebSocket JMS Client API
 
-Tutorial how to create Kaazing .NET WebSocket JMS application from scratch, to be able to send and receive messagesover WebSocket can be found [here](http://kaazing.com/doc/5.0/jms_client_docs/dev-dotnet/o_dev_dotnet.html).
+Checklist how to create Kaazing .NET WebSocket JMS application from scratch, to be able to send and receive messagesover WebSocket can be found [here](http://kaazing.com/doc/5.0/jms_client_docs/dev-dotnet/o_dev_dotnet.html).
 
 ## API Documentation
 
