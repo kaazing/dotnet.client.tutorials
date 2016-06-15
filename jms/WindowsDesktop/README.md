@@ -12,6 +12,8 @@ This tutorial shows how standalone .NET desktop application can communicate over
 * Load the solution `JmsDemo.sln` in Microsoft Visual Studio
 * Execute 'Build/Build All'
 
+__Note:__ To test basic authentication for WebSocket connection in demo app use URL -  wss://sandbox.kaazing.net/jms-auth for location.
+
 ## Interact with Kaazing .NET WebSocket JMS Client API
 
 Checklist how to create Kaazing .NET WebSocket JMS from scratch, to be able to send and receive messages over WebSocket can be found [here](http://kaazing.com/doc/5.0/jms_client_docs/dev-dotnet/o_dev_dotnet.html).
