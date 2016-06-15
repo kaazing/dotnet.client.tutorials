@@ -13,6 +13,8 @@ The `echo` service, running inside the Kaazing WebSocket Gateway, reflects back 
 * Load the solution `EchoDemo.sln` in Microsoft Visual Studio
 * Execute 'Build/Build All'
 
+__Note:__ To test basic authentication for WebSocket connection in demo app use URL -  wss://sandbox.kaazing.net/echo-auth for location. 
+
 ## Interact with Kaazing .NET WebSocket Client API
 
 Checklist how to create Kaazing .NET WebSocket from scratch, to be able to send and receive messages
