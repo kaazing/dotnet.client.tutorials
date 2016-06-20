@@ -69,7 +69,7 @@ namespace Kaazing.AMQP.Demo
 
             if ((locText == null) || (locText.Length == 0))
             {
-                locText = "ws://localhost:8001/amqp";
+                locText = "wss://sandbox.kaazing.net/amqp091";
             }
 
             try
