@@ -13,7 +13,9 @@ This Windows Store application communicates with an `Echo` service hosted by Kaa
 * Execute 'Build/Build All'
 
 __Note:__ To test basic authentication for the Gateway connection use the URL `wss://sandbox.kaazing.net/echo-auth` for location. 
-
+</br>
+username: tutorial </br>
+password: tutorial 
 ## Interact with Kaazing .NET WebSocket Client API
 
 Documentation on how to create Kaazing .NET WebSocket applications from scratch can be found [here](http://kaazing.com/doc/5.0/websocket_client_docs/dev-dotnet/o_dev_dotnet.html).
