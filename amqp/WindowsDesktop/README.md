@@ -13,6 +13,9 @@ This .NET desktop application communicates with an AMQP server via Kaazing WebSo
 * Execute 'Build/Build All'
 
 __Note:__ To test basic authentication for the Gateway connection use the URL `wss://sandbox.kaazing.net/amqp091-auth` for location.
+</br>
+username: tutorial </br>
+password: tutorial 
 
 ## Interact with Kaazing .NET AMQP Client API
 
