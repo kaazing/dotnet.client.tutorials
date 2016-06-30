@@ -28,7 +28,6 @@ namespace Kaazing.JMS.Demo
         private IConnection connection = null;
         private ISession session = null;
         private IMessageConsumer consumer = null;
-        private IDictionary<String, List<IMessageConsumer>> consumers = null;
         BasicChallengeHandler basicHandler;
 
         private delegate void InvokeDelegate();
@@ -127,9 +126,7 @@ namespace Kaazing.JMS.Demo
                 Log("CONNECTED");
 
                 connection.ExceptionListener = new ExceptionHandler(this);
-
-                consumers = new Dictionary<String, List<IMessageConsumer>>();
-
+                
                 session = connection.CreateSession(false, SessionConstants.AUTO_ACKNOWLEDGE);
 
                 connection.Start();
@@ -137,7 +134,6 @@ namespace Kaazing.JMS.Demo
                 // Enable User Interface for Connected application
                 SubscribeButton.Enabled = true;
                 SendButton.Enabled = true;
-                UnsubscribeButton.Enabled = true;
 
                 DisconnectButton.Enabled = true;
             }
@@ -188,7 +184,6 @@ namespace Kaazing.JMS.Demo
 
                 SendButton.Enabled = false;
                 SubscribeButton.Enabled = false;
-                UnsubscribeButton.Enabled = false;
 
                 DisconnectButton.Enabled = false;
             }));
@@ -196,6 +191,25 @@ namespace Kaazing.JMS.Demo
 
 
         private void SubscribeButton_Click(object sender, EventArgs e)
+        {
+           if (SubscribeButton.Text == "Subscribe")
+            {
+                if (Subscribe())
+                {
+                    SubscribeButton.Text = "Unsubscribe";
+                    DestinationText.Enabled = false;
+                }
+            }
+            else
+            {
+                Unsubscribe();
+                SubscribeButton.Text = "Subscribe";
+                DestinationText.Enabled = true;
+            }
+
+        }
+
+        private bool Subscribe()
         {
             // TODO: Track consumers by topic, and durable subscribers by subscription name
             Log("SUBSCRIBE:" + DestinationText.Text);
@@ -212,63 +226,24 @@ namespace Kaazing.JMS.Demo
             else
             {
                 Log("Destination must start with /topic/ or /queue/");
-                return;
+                return false;
             }
 
             consumer = session.CreateConsumer(destination);
             consumer.MessageListener = new MessageHandler(this);
-
-            List<IMessageConsumer> consumerList = null;
-            try
-            {
-                consumerList = consumers[DestinationText.Text];
-            }
-            catch (KeyNotFoundException)
-            {
-                consumerList = new List<IMessageConsumer>();
-            }
-            consumerList.Add(consumer);
-
-            try
-            {
-                consumers.Add(DestinationText.Text, consumerList);
-            }
-            catch (ArgumentException)
-            {
-
-                // we catch the ArgumentException here, because in Java the the VALUE
-                // is replaced, if a KEY already exists:
-                List<IMessageConsumer> oldValue = consumers[DestinationText.Text];
-                consumers.Remove(DestinationText.Text);
-                consumers.Add(DestinationText.Text, consumerList);
-            }
-
+            return true;
         }
 
-        private void UnsubscribeButton_Click(object sender, EventArgs e)
+        private void Unsubscribe()
         {
             Log("UNSUBSCRIBE:" + DestinationText.Text);
-            List<IMessageConsumer> consumerList = consumers[DestinationText.Text];
-            int consumerlistSize = consumerList.Count;
-
-            if (consumerlistSize > 0)
+       
+            if (consumer != null)
             {
-                IMessageConsumer consumer = (IMessageConsumer)consumerList[consumerlistSize - 1];
-                consumerList.RemoveAt(consumerlistSize - 1);
-                if (consumer != null)
-                {
-                    consumer.Close();
-                }
-                else
-                {
-                    Log("ERROR: Destination not found: " + DestinationText.Text);
-                }
+                consumer.Close();
+            }
 
-            }
-            else
-            {
-                Log("ERROR: Destination not found: " + DestinationText.Text);
-            }
+            consumer = null;
         }
 
         class MessageHandler : IMessageListener
@@ -420,6 +395,11 @@ namespace Kaazing.JMS.Demo
             {
                 ConnectButton.Enabled = true;
             }
+        }
+
+        private void DestinationText_TextChanged(object sender, EventArgs e)
+        {
+            SubscribeButton.Enabled = DestinationText.TextLength > 0;
         }
     }
 }

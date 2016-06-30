@@ -45,7 +45,6 @@ namespace Kaazing.JMS.Demo
             this.label1 = new System.Windows.Forms.Label();
             this.SubscribeButton = new System.Windows.Forms.Button();
             this.SendButton = new System.Windows.Forms.Button();
-            this.UnsubscribeButton = new System.Windows.Forms.Button();
             this.Title = new System.Windows.Forms.Label();
             this.Subtitle = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -59,7 +58,7 @@ namespace Kaazing.JMS.Demo
             // 
             this.LocationLabel.AutoSize = true;
             this.LocationLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LocationLabel.Location = new System.Drawing.Point(16, 88);
+            this.LocationLabel.Location = new System.Drawing.Point(16, 82);
             this.LocationLabel.Name = "LocationLabel";
             this.LocationLabel.Size = new System.Drawing.Size(75, 17);
             this.LocationLabel.TabIndex = 0;
@@ -67,7 +66,7 @@ namespace Kaazing.JMS.Demo
             // 
             // LocationText
             // 
-            this.LocationText.Location = new System.Drawing.Point(104, 88);
+            this.LocationText.Location = new System.Drawing.Point(104, 82);
             this.LocationText.Name = "LocationText";
             this.LocationText.Size = new System.Drawing.Size(197, 20);
             this.LocationText.TabIndex = 1;
@@ -93,7 +92,7 @@ namespace Kaazing.JMS.Demo
             // 
             // ConnectButton
             // 
-            this.ConnectButton.Location = new System.Drawing.Point(101, 139);
+            this.ConnectButton.Location = new System.Drawing.Point(101, 137);
             this.ConnectButton.Name = "ConnectButton";
             this.ConnectButton.Size = new System.Drawing.Size(85, 28);
             this.ConnectButton.TabIndex = 8;
@@ -104,7 +103,7 @@ namespace Kaazing.JMS.Demo
             // DisconnectButton
             // 
             this.DisconnectButton.Enabled = false;
-            this.DisconnectButton.Location = new System.Drawing.Point(192, 139);
+            this.DisconnectButton.Location = new System.Drawing.Point(192, 137);
             this.DisconnectButton.Name = "DisconnectButton";
             this.DisconnectButton.Size = new System.Drawing.Size(85, 28);
             this.DisconnectButton.TabIndex = 9;
@@ -116,7 +115,7 @@ namespace Kaazing.JMS.Demo
             // 
             this.MessageLabel.AutoSize = true;
             this.MessageLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.MessageLabel.Location = new System.Drawing.Point(16, 116);
+            this.MessageLabel.Location = new System.Drawing.Point(16, 110);
             this.MessageLabel.Name = "MessageLabel";
             this.MessageLabel.Size = new System.Drawing.Size(77, 17);
             this.MessageLabel.TabIndex = 10;
@@ -124,7 +123,7 @@ namespace Kaazing.JMS.Demo
             // 
             // MessageText
             // 
-            this.MessageText.Location = new System.Drawing.Point(104, 113);
+            this.MessageText.Location = new System.Drawing.Point(104, 110);
             this.MessageText.Name = "MessageText";
             this.MessageText.Size = new System.Drawing.Size(454, 20);
             this.MessageText.TabIndex = 11;
@@ -132,17 +131,18 @@ namespace Kaazing.JMS.Demo
             // 
             // DestinationText
             // 
-            this.DestinationText.Location = new System.Drawing.Point(447, 88);
+            this.DestinationText.Location = new System.Drawing.Point(447, 82);
             this.DestinationText.Name = "DestinationText";
             this.DestinationText.Size = new System.Drawing.Size(197, 20);
             this.DestinationText.TabIndex = 13;
             this.DestinationText.Text = "/topic/destination";
+            this.DestinationText.TextChanged += new System.EventHandler(this.DestinationText_TextChanged);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(338, 88);
+            this.label1.Location = new System.Drawing.Point(338, 82);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(103, 17);
             this.label1.TabIndex = 12;
@@ -151,7 +151,7 @@ namespace Kaazing.JMS.Demo
             // SubscribeButton
             // 
             this.SubscribeButton.Enabled = false;
-            this.SubscribeButton.Location = new System.Drawing.Point(353, 139);
+            this.SubscribeButton.Location = new System.Drawing.Point(353, 137);
             this.SubscribeButton.Name = "SubscribeButton";
             this.SubscribeButton.Size = new System.Drawing.Size(85, 28);
             this.SubscribeButton.TabIndex = 14;
@@ -162,24 +162,13 @@ namespace Kaazing.JMS.Demo
             // SendButton
             // 
             this.SendButton.Enabled = false;
-            this.SendButton.Location = new System.Drawing.Point(444, 139);
+            this.SendButton.Location = new System.Drawing.Point(444, 137);
             this.SendButton.Name = "SendButton";
             this.SendButton.Size = new System.Drawing.Size(85, 28);
             this.SendButton.TabIndex = 15;
             this.SendButton.Text = "Send";
             this.SendButton.UseVisualStyleBackColor = true;
             this.SendButton.Click += new System.EventHandler(this.SendButton_Click);
-            // 
-            // UnsubscribeButton
-            // 
-            this.UnsubscribeButton.Enabled = false;
-            this.UnsubscribeButton.Location = new System.Drawing.Point(535, 139);
-            this.UnsubscribeButton.Name = "UnsubscribeButton";
-            this.UnsubscribeButton.Size = new System.Drawing.Size(85, 28);
-            this.UnsubscribeButton.TabIndex = 16;
-            this.UnsubscribeButton.Text = "Unsubscribe";
-            this.UnsubscribeButton.UseVisualStyleBackColor = true;
-            this.UnsubscribeButton.Click += new System.EventHandler(this.UnsubscribeButton_Click);
             // 
             // Title
             // 
@@ -217,7 +206,7 @@ namespace Kaazing.JMS.Demo
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(564, 114);
+            this.label4.Location = new System.Drawing.Point(564, 111);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(59, 17);
             this.label4.TabIndex = 25;
@@ -226,7 +215,7 @@ namespace Kaazing.JMS.Demo
             // BinaryCheckBox
             // 
             this.BinaryCheckBox.AutoSize = true;
-            this.BinaryCheckBox.Location = new System.Drawing.Point(629, 116);
+            this.BinaryCheckBox.Location = new System.Drawing.Point(629, 113);
             this.BinaryCheckBox.Name = "BinaryCheckBox";
             this.BinaryCheckBox.Size = new System.Drawing.Size(15, 14);
             this.BinaryCheckBox.TabIndex = 26;
@@ -236,7 +225,7 @@ namespace Kaazing.JMS.Demo
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(17, 7);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(30, 31);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -256,7 +245,6 @@ namespace Kaazing.JMS.Demo
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Subtitle);
             this.Controls.Add(this.Title);
-            this.Controls.Add(this.UnsubscribeButton);
             this.Controls.Add(this.SendButton);
             this.Controls.Add(this.SubscribeButton);
             this.Controls.Add(this.DestinationText);
@@ -292,7 +280,6 @@ namespace Kaazing.JMS.Demo
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button SubscribeButton;
         private System.Windows.Forms.Button SendButton;
-        private System.Windows.Forms.Button UnsubscribeButton;
         private System.Windows.Forms.Label Title;
         private System.Windows.Forms.Label Subtitle;
         private System.Windows.Forms.Label label3;
