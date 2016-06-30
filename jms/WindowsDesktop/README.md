@@ -13,6 +13,9 @@ This standalone .NET desktop application communicates with a JMS broker via Kaaz
 * Execute 'Build/Build All'
 
 __Note:__ To test basic authentication for the Gateway connection use the URL `wss://sandbox.kaazing.net/jms-auth` for location.
+</br>
+username: tutorial </br>
+password: tutorial 
 
 ## Interact with Kaazing .NET JMS Client API
 
