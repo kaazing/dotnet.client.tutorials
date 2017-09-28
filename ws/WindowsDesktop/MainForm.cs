@@ -30,7 +30,7 @@ namespace EchoDemo
         {
             InitializeComponent();
 
-            string defaultLocation = "wss://sandbox.kaazing.net/echo";
+            string defaultLocation = "wss://demos.kaazing.com/echo";
             LocationText.Text = defaultLocation;
         }
 
