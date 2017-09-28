@@ -12,7 +12,7 @@ This Windows Store application communicates with a JMS broker via Kaazing WebSoc
 * Load the solution `JmsDemo.sln` in Microsoft Visual Studio
 * Execute 'Build/Build All'
 
-__Note:__ To test basic authentication for the Gateway connection use the URL `wss://sandbox.kaazing.net/jms-auth` for location.</br>
+__Note:__ To test basic authentication for the Gateway connection use the URL `wss://demos.kaazing.com/jms-auth` for location.</br>
 username: tutorial </br>
 password: tutorial 
 
