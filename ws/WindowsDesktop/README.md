@@ -12,7 +12,7 @@ This standalone .NET desktop application communicates with an `Echo` service hos
 * Load the solution `EchoDemo.sln` in Microsoft Visual Studio
 * Execute 'Build/Build All'
 
-__Note:__ To test basic authentication for the Gateway connection use the URL `wss://sandbox.kaazing.net/echo-auth` for location. 
+__Note:__ To test basic authentication for the Gateway connection use the URL `wss://demos.kaazing.com/echo-auth` for location. 
 </br>
 username: tutorial </br>
 password: tutorial 
