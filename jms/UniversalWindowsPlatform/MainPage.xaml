@@ -42,7 +42,7 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <TextBlock Text="Location" Grid.Row="0" Margin="200,-20,0,0"/>
-            <TextBox x:Name="UrlBox" Grid.Row="0" Grid.ColumnSpan="2" Width="1000" HorizontalAlignment="Left" Text="wss://sandbox.kaazing.net/jms" Margin="200,0,0,0" TabIndex="-1" TextChanged="OnUrlTextChanged"/>
+            <TextBox x:Name="UrlBox" Grid.Row="0" Grid.ColumnSpan="2" Width="1000" HorizontalAlignment="Left" Text="wss://demos.kaazing.com/jms" Margin="200,0,0,0" TabIndex="-1" TextChanged="OnUrlTextChanged"/>
             <Button x:Name="ConnectButton" Grid.Row="1" Grid.Column="0" HorizontalAlignment="Right" Content="Connect" Width="200" Margin="0,0,100,0" VerticalAlignment="Center" BorderThickness="1" Click="ConnButton_Click" />
             <Button x:Name="DisconnectButton" Grid.Row="1" Grid.Column="1" HorizontalAlignment="Right" Content="Disconnect" Width="200" Margin="0" VerticalAlignment="Center" BorderThickness="1" IsEnabled="False" Click="DisconnectButton_Click"/>
             <TextBlock Text="Destination" Grid.Row="2" Margin="200,-20,0,0"/>
