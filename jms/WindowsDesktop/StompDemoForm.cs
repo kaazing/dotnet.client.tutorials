@@ -40,7 +40,7 @@ namespace Kaazing.JMS.Demo
         {
             InitializeComponent();
 
-            String defaultLocation = "wss://sandbox.kaazing.net/jms";
+            String defaultLocation = "wss://demos.kaazing.com/jms";
             LocationText.Text = defaultLocation;
 
             ResourceManager resourceManager = new ResourceManager("Kaazing.JMS.Demo.StompDemoForm", GetType().Assembly);
