@@ -12,7 +12,7 @@ This Windows Store application communicates with an `Echo` service hosted by Kaa
 * Load the solution `EchoDemo.sln` in Microsoft Visual Studio
 * Execute 'Build/Build All'
 
-__Note:__ To test basic authentication for the Gateway connection use the URL `wss://sandbox.kaazing.net/echo-auth` for location. 
+__Note:__ To test basic authentication for the Gateway connection use the URL `wss://demos.kaazing.com/echo-auth` for location. 
 </br>
 username: tutorial </br>
 password: tutorial 
