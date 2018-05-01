@@ -4,7 +4,7 @@ This Windows Store application communicates with a JMS broker via Kaazing WebSoc
 
 ## Minimum Requirements for Running or Building
 
-* Microsoft .NET Framework 4.5.2
+* Microsoft .NET Framework 4.6.2
 * Microsoft Visual Studio 2015 or higher
 
 ## Steps for Building the Project
